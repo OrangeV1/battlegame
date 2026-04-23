@@ -1,7 +1,7 @@
 """
 TODO:
-Comment code
-Optimize tile rendering
+Collision
+Tile animations
 """
 #System functions & 2D Graphics functionality
 import sys, pygame
