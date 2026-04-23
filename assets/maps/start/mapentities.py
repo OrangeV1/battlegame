@@ -1,5 +1,7 @@
 from entities.trigger import Trigger
 from map.tileset import Tileset
+from entities.collider import Collider
+from yaml import safe_load
 
 class upLevelTrigger(Trigger):
     def __init__(self, screen):
@@ -42,14 +44,26 @@ class downLevelTrigger(Trigger):
         self.screen.tm.loadMap("d1")
         self.screen.player1.pos.y = 80 * 0.5 + 10
 
+class collider1(Collider):
+    def __init__(self, screen):
+        settings = safe_load(open("./settings.yaml"))
+        scale = settings["scale"] * 16
+        super().__init__(screen, scale * 10, scale * 5, scale * 2, scale * 2)
+
+class collider2(Collider):
+    def __init__(self, screen):
+        settings = safe_load(open("./settings.yaml"))
+        scale = settings["scale"] * 16
+        super().__init__(screen, 0, scale * 5, scale * 1, scale * 3)
+
 class tilesetTest(Tileset):
     def __init__(self, screen):
         self.screen = screen
         tiles = {
             0: [],
-            1: [(17, 0, 16, 16)],
-            2: [(289, 68, 16, 16)],
-            3: [(68, 221, 16, 16)]
+            1: [(11 * 16, 4 * 16, 16, 16)],
+            2: [(17 * 16, 0, 16, 16)],
+            3: [(12 * 16, 3 * 16, 16, 16)]
         }
-        super().__init__("tiles/32xtileset", 7, tiles)
+        super().__init__("tiles/board2", 7, tiles)
         self.load_tiles("./assets/maps/start/tiles.csv")
