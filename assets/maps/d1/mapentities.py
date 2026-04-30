@@ -1,4 +1,5 @@
 from entities.trigger import Trigger
+from map.tileset import Tileset
 
 class upLevelTrigger(Trigger):
     def __init__(self, screen):
@@ -10,3 +11,15 @@ class upLevelTrigger(Trigger):
     def whenCollided(self):
         self.screen.tm.loadMap("start")
         self.screen.player1.pos.y = 80 * 6.5
+
+class tilesetTest(Tileset):
+    def __init__(self, screen):
+        self.screen = screen
+        tiles = {
+            0: [],
+            1: [(1 * 16, 0, 16, 16)],
+            2: [(17 * 16, 4 * 16, 16, 16)],
+            3: [(4 * 16, 12 * 16, 16, 16)]
+        }
+        super().__init__("tiles/32xtileset", 7, tiles)
+        self.load_tiles("./assets/maps/d1/tiles.csv")

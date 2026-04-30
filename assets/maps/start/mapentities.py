@@ -61,9 +61,9 @@ class tilesetTest(Tileset):
         self.screen = screen
         tiles = {
             0: [],
-            1: [(11 * 16, 4 * 16, 16, 16)],
-            2: [(17 * 16, 0, 16, 16)],
-            3: [(12 * 16, 3 * 16, 16, 16)]
+            1: [(1 * 16, 0, 16, 16)],
+            2: [(17 * 16, 4 * 16, 16, 16)],
+            3: [(4 * 16, 12 * 16, 16, 16)]
         }
-        super().__init__("tiles/board2", 7, tiles)
+        super().__init__("tiles/32xtileset", 7, tiles)
         self.load_tiles("./assets/maps/start/tiles.csv")
