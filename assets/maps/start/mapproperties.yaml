@@ -4,4 +4,4 @@ xOffset: 0
 yOffset: 0
 tileKeys: false
 tileSize: 16
-entities: ["upLevelTrigger", "rightLevelTrigger", "leftLevelTrigger", "downLevelTrigger", "collider1", "collider2", "tilesetTest"]
+entities: ["upLevelTrigger", "rightLevelTrigger", "leftLevelTrigger", "downLevelTrigger", "Ltree1", "Ltree2", "Rtree1", "Rtree2", "Lwall1", "Lwall2", "Rwall1", "Rwall2", "tilesetTest"]

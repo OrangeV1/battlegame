@@ -5,5 +5,5 @@ class Collider():
         self.rect = Rect(x, y, width, height)
         screen.tm.collision_group.append(self.rect)
 
-    def update(self):
-        pass
+    #def update(self):
+        #pass

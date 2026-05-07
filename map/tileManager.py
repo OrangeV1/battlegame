@@ -52,7 +52,7 @@ class TileManager:
     def drawMap(self):
         """
         Draws a map onto the screen
-        """
+        
         #Loop through tiles in map
         for tile in self.tiles:
             try:
@@ -67,8 +67,11 @@ class TileManager:
             except:
                 pass
                 #print("WARNING: Tile failed to load")
+        """
         for entity in self.entities:
-            #try:
-            entity.update()
-            #except:
-                #print("WARNING: Entity failed to update")
+            try:
+                entity.update()
+            except AttributeError:
+                pass
+            except:
+                print("WARNING: Entity failed to update")
