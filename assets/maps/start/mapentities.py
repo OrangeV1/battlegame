@@ -101,5 +101,14 @@ class tilesetTest(Tileset):
             2: [(17 * 16, 4 * 16, 16, 16)],
             3: [(4 * 16, 12 * 16, 16, 16)]
         }
-        super().__init__("tiles/32xtileset", 7, tiles)
+        super().__init__("tiles/32xtileset", 0, tiles)
+        self.load_tiles("./assets/maps/start/tiles.csv")
+
+class tilesetTest2(Tileset):
+    def __init__(self, screen):
+        self.screen = screen
+        tiles = {
+            4: [(6 * 16, 2 * 16, 16, 16)]
+        }
+        super().__init__("tiles/16xtiles", 7, tiles)
         self.load_tiles("./assets/maps/start/tiles.csv")
