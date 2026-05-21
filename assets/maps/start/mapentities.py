@@ -92,23 +92,26 @@ class Rwall2(Collider):
         scale = settings["scale"] * 16
         super().__init__(screen, scale * 10, 0, scale * 2, scale * 3)
 
-class tilesetTest(Tileset):
+class tileManager(Tileset):
     def __init__(self, screen):
         self.screen = screen
         tiles = {
             0: [],
             1: [(1 * 16, 0, 16, 16)],
             2: [(17 * 16, 4 * 16, 16, 16)],
-            3: [(4 * 16, 12 * 16, 16, 16)]
+            3: [(4 * 16, 12 * 16, 16, 16)],
+            6: [(16 * 16, 4 * 16, 16, 16)],
+            7: [(18 * 16, 4 * 16, 16, 16)]
         }
         super().__init__("tiles/32xtileset", 0, tiles)
         self.load_tiles("./assets/maps/start/tiles.csv")
 
-class tilesetTest2(Tileset):
+class objectManager(Tileset):
     def __init__(self, screen):
         self.screen = screen
         tiles = {
-            4: [(6 * 16, 2 * 16, 16, 16)]
+            4: [(6 * 16, 2 * 16, 16, 16)],
+            5: [(8 * 16, 5 * 16, 16, 16)]
         }
         super().__init__("tiles/16xtiles", 7, tiles)
         self.load_tiles("./assets/maps/start/tiles.csv")
