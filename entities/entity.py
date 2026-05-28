@@ -17,6 +17,7 @@ class Entity:
         """
         Check if the given rectangle collides with the list of tiles with collision
         """
+        #pygame.draw.rect(self.screen.screen, (0, 0, 0), rect, border_radius=5)
         return rect.collidelist(self.screen.tm.collision_group) != -1
 
     def drawSprite(self):
