@@ -18,11 +18,12 @@ class tileManager(Tileset):
             0: [],
             1: [(1 * 16, 0, 16, 16)],
             2: [(17 * 16, 4 * 16, 16, 16)],
-            3: [(4 * 16, 12 * 16, 16, 16)],
+            3: [(5 * 16, 12 * 16, 16, 16), (6 * 16, 12 * 16, 16, 16), (7 * 16, 12 * 16, 16, 16), (8 * 16, 12 * 16, 16, 16)],
             5: [(16 * 16, 4 * 16, 16, 16)],
             6: [(18 * 16, 4 * 16, 16, 16)]
         }
         super().__init__("tiles/32xtileset", 7, tiles)
+        self.frames = 3
         self.load_tiles("./assets/maps/r1/tiles.csv")
 
 class objectManager(Tileset):
