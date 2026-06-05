@@ -33,14 +33,11 @@ class Tileset:
     
     def update(self):
         self.frame_time += 1
-        #If the sprite's local time matches the time when the sprite should update, change the sprite
         if self.frame_time > self.anim_time:
-            #If the sprite number is equal to the amount of sprites available, the sprite number gets reset; Else, the sprite number gets incremented by 1
-            if self.frame < self.frames:
-                self.frame += 1
-            else:
-                self.frame = 0
+            self.frame += 1
             self.frame_time = 0
+            if self.frame > 2 ** 20:
+                self.frame = 0
         settings = yaml.safe_load(open("./settings.yaml"))
         x = settings["cameraX"]
         y = settings["cameraY"]
@@ -48,7 +45,7 @@ class Tileset:
             for j in range(0 + x, len(self.current_map[i])):
                 try:
                     if int(self.current_map[i][j]) in self.anim_tiles:
-                        image = self.sp.scaleImage(self.tiles[int(self.current_map[i][j])][self.frame])
+                        image = self.sp.scaleImage(self.tiles[int(self.current_map[i][j])][self.frame % len(self.tiles[int(self.current_map[i][j])])])
                     else:
                         image = self.sp.scaleImage(self.tiles[int(self.current_map[i][j])][0])
                     rect = image.get_rect()

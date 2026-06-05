@@ -112,7 +112,7 @@ class objectManager(Tileset):
         self.screen = screen
         tiles = {
             4: [(6 * 16, 2 * 16, 16, 16)],
-            5: [(8 * 16, 5 * 16, 16, 16)]
+            5: [(8 * 16, 5 * 16, 16, 16), (9 * 16, 5 * 16, 16, 16), (10 * 16, 5 * 16, 16, 16)]
         }
         super().__init__("tiles/16xtiles", 7, tiles)
         self.load_tiles("./assets/maps/start/tiles.csv")
