@@ -41,7 +41,7 @@ class downLevelTrigger(Trigger):
         self.rect.height *= 0.5
     
     def whenCollided(self):
-        self.screen.tm.loadMap("d1")
+        self.screen.tm.loadMap("temp")
         self.screen.player1.pos.y = 80 * 0.5 + 10
 
 class Rtree1(Collider):

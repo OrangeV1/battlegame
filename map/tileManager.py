@@ -69,9 +69,10 @@ class TileManager:
                 #print("WARNING: Tile failed to load")
         """
         for entity in self.entities:
+           
             try:
                 entity.update()
             except AttributeError:
                 pass
-            except:
-                print("WARNING: Entity failed to update")
+            # except:
+            #     print("WARNING: Entity failed to update")
