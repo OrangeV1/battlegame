@@ -56,7 +56,7 @@ class Runner:
             self.tm.drawMap()
             self.player1.update()
             #On-screen FPS counter for benchmarking
-            self.screen.blit(pygame.font.Font(None, 18).render(f"{clock.get_fps():2.0f} FPS" , True, (255, 255, 255)), (10, 10))
+            #self.screen.blit(pygame.font.Font(None, 18).render(f"{clock.get_fps():2.0f} FPS" , True, (255, 255, 255)), (10, 10))
             #Apply changes to the screen
             pygame.display.flip()
 

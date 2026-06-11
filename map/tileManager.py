@@ -22,7 +22,7 @@ class TileManager:
         """
         self.mapName = name
         #Load map tiles, properties, and clear collision group
-        self.tiles = open("./assets/maps/" + self.mapName + "/tiles.txt").read().split("\n") #Split the tiles.txt file into a list by line
+        #self.tiles = open("./assets/maps/" + self.mapName + "/tiles.txt").read().split("\n") #Split the tiles.txt file into a list by line
         self.mapProperties = yaml.safe_load(open("./assets/maps/" + self.mapName + "/mapproperties.yaml", "r")) #Load map properties
         self.collision_group = []
 
@@ -37,17 +37,19 @@ class TileManager:
             for entity in self.mapProperties["entities"]:
                 entity = getattr(entities, entity)
                 self.entities.append(entity(self.screen))
-        
+
+    """
     def createTile(self, i):
-        """
+        '''
         Use a dictionary of tile attributes to construct a tile object and append tile to collision list if applicable
-        """
+        '''
         #Use the dictionary as a constructor for a tile object and load the images into the object
         constructor = eval(self.tiles[i])
         self.tiles[i] = Tile(constructor, "./assets/maps/" + self.mapName + "/tile.keys") if self.mapProperties["tileKeys"] else Tile(constructor)
         #Add tile to collision list if collision attribute is set to true
         if self.tiles[i].hasCollision:
             self.collision_group.append(self.tiles[i].rect)
+    """
     
     def drawMap(self):
         """
@@ -69,10 +71,9 @@ class TileManager:
                 #print("WARNING: Tile failed to load")
         """
         for entity in self.entities:
-           
             try:
                 entity.update()
             except AttributeError:
                 pass
-            # except:
-            #     print("WARNING: Entity failed to update")
+            except:
+                print("WARNING: Entity failed to update")

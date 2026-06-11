@@ -30,6 +30,15 @@ class Tileset:
             self.current_map[i] = self.current_map[i].split(";")
             while "" in self.current_map[i]:
                 self.current_map[i].remove("")
+        with open(file[:file.rfind("/")+1]+"mapproperties.yaml") as f:
+            f = yaml.safe_load(f)
+            with open("./settings.yaml") as s:
+                settings = yaml.safe_load(s)
+            settings["cameraX"] = f["xOffset"]
+            settings["cameraY"] = f["yOffset"]
+            with open("./settings.yaml", "w") as s:
+                yaml.safe_dump(settings, s, default_flow_style=False)
+
     
     def update(self):
         self.frame_time += 1
