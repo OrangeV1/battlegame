@@ -6,3 +6,4 @@ https://gamemaker.io/en/tutorials/tile-set-editor
 - tile maps are just comma separated values (.csv) files
 - tiles are stored in tile maps as just numbers, integers that corrispond to tiles which are defined in the tileset's attributes
 - every tile shares the same frame count
+https://deltarune.wiki/w/Island_Board#Map
