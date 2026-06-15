@@ -1,8 +1,7 @@
-from entities.entity import Entity
-class Trigger(Entity):
+from entities.sprite2D import Sprite2D
+class Trigger(Sprite2D):
     def __init__(self, screen):
         super().__init__(screen)
-        self.image = self.sp.getSprites([(0, 0, 1, 1)])[0]
     
     def whenCollided(self):
         """

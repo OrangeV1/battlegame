@@ -2,6 +2,8 @@ columns: 151
 rows: 132
 xOffset: 100
 yOffset: 26
+playerX: 0
+playerY: 0
 tileKeys: false
 tileSize: 16
 entities: ["tileManager", "objectManager"]

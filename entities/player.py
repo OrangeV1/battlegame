@@ -3,7 +3,7 @@ from entities.entity import Entity
 
 class Player(Entity):
     def __init__(self, screen):
-        Entity.__init__(self, screen)
+        super().__init__(screen)
         #Attempt to load player sprites
         try:
             self.sp.loadSheet("player/spritesheet")
@@ -77,14 +77,14 @@ class Player(Entity):
         Use self.velocity to move the player if it doesn't result in a collision
         """
         #Check for a collision on a full step in the x axis; If a collision is found, check for a collision in a half step
-        if not self.checkCollision(pygame.Rect(self.rect.left + self.velocity.x * self.SPEED, self.rect.top + self.hitbox.height, self.rect.width, self.rect.height - self.hitbox.height)):
+        if not self.checkCollision(pygame.Rect(self.rect.left + self.velocity.x * self.SPEED, self.rect.top + self.hitbox.height, self.rect.width, self.rect.height - self.hitbox.height), self.screen.tm.collision_group):
             self.pos.x += self.velocity.x * self.SPEED
-        elif not self.checkCollision(pygame.Rect(self.rect.left + self.velocity.x * self.SPEED * 0.5, self.rect.top + self.hitbox.height, self.rect.width, self.rect.height - self.hitbox.height)):
+        elif not self.checkCollision(pygame.Rect(self.rect.left + self.velocity.x * self.SPEED * 0.5, self.rect.top + self.hitbox.height, self.rect.width, self.rect.height - self.hitbox.height), self.screen.tm.collision_group):
             self.pos.x += self.velocity.x * self.SPEED * 0.5
         #Check for a collision on a full step in the y axis; If a collision is found, check for a collision in a half step
-        if not self.checkCollision(pygame.Rect(self.rect.left, self.rect.top + self.velocity.y * self.SPEED + self.hitbox.height, self.rect.width, self.rect.height - self.hitbox.height)):
+        if not self.checkCollision(pygame.Rect(self.rect.left, self.rect.top + self.velocity.y * self.SPEED + self.hitbox.height, self.rect.width, self.rect.height - self.hitbox.height), self.screen.tm.collision_group):
             self.pos.y += self.velocity.y * self.SPEED
-        elif not self.checkCollision(pygame.Rect(self.rect.left, self.rect.top + self.velocity.y * self.SPEED * 0.5 + self.hitbox.height, self.rect.width, self.rect.height - self.hitbox.height)):
+        elif not self.checkCollision(pygame.Rect(self.rect.left, self.rect.top + self.velocity.y * self.SPEED * 0.5 + self.hitbox.height, self.rect.width, self.rect.height - self.hitbox.height), self.screen.tm.collision_group):
             self.pos.y += self.velocity.y * self.SPEED * 0.5
         self.rect.x, self.rect.y = self.pos.x, self.pos.y #Update player rectangle x and y to the new position
         self.velocity.update(0, 0) #Reset velocity in the x and y axis
