@@ -14,7 +14,7 @@ class TileManager:
         self.tiles = []
         self.entities = []
         self.mapName = ""
-        self.mapProperties = {}
+        self.mapproperties = {}
     
     def loadMap(self, name: str):
         """
@@ -23,7 +23,7 @@ class TileManager:
         self.mapName = name
         #Load map tiles, properties, and clear collision group
         #self.tiles = open("./assets/maps/" + self.mapName + "/tiles.txt").read().split("\n") #Split the tiles.txt file into a list by line
-        self.mapProperties = yaml.safe_load(open("./assets/maps/" + self.mapName + "/mapproperties.yaml", "r")) #Load map properties
+        self.mapproperties = yaml.safe_load(open("./assets/maps/" + self.mapName + "/mapproperties.yaml", "r")) #Load map properties
         self.collision_group = []
 
         #Create a pool of threads to concurrently initialize every tile
@@ -32,9 +32,9 @@ class TileManager:
         #    executor.map(self.createTile, tiles)
         #loop through a list of entities and create an object for each one
         self.entities = []
-        if len(self.mapProperties["entities"]):
+        if len(self.mapproperties["entities"]):
             entities = importlib.import_module("assets.maps."+ self.mapName + ".mapentities")
-            for entity in self.mapProperties["entities"]:
+            for entity in self.mapproperties["entities"]:
                 entity = getattr(entities, entity)
                 self.entities.append(entity(self.screen))
 
@@ -45,7 +45,7 @@ class TileManager:
         '''
         #Use the dictionary as a constructor for a tile object and load the images into the object
         constructor = eval(self.tiles[i])
-        self.tiles[i] = Tile(constructor, "./assets/maps/" + self.mapName + "/tile.keys") if self.mapProperties["tileKeys"] else Tile(constructor)
+        self.tiles[i] = Tile(constructor, "./assets/maps/" + self.mapName + "/tile.keys") if self.mapproperties["tileKeys"] else Tile(constructor)
         #Add tile to collision list if collision attribute is set to true
         if self.tiles[i].hasCollision:
             self.collision_group.append(self.tiles[i].rect)

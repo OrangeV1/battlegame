@@ -1,5 +1,6 @@
 import pygame
 from entities.spriteProvider import SpriteProvider
+from yaml import safe_load
 
 class Sprite2D:
     def __init__(self, screen, rect = (0, 0, 80, 80)):
@@ -8,7 +9,7 @@ class Sprite2D:
         self.image = pygame.Surface((16, 16))
         self.rect = pygame.Rect(rect)
     
-    def checkCollision(self, rect: pygame.Rect, colliders):
+    def checkCollision(self, rect: pygame.Rect, colliders: list):
         """
         Check if the given rectangle collides with the list of tiles with collision
         """
@@ -18,7 +19,17 @@ class Sprite2D:
         """
         Draw self.image to the screen
         """
-        self.screen.screen.blit(self.image, self.rect)
+        with open("./settings.yaml") as s:
+            s = safe_load(s)
+            cameraX = s["cameraX"]
+            cameraY = s["cameraY"]
+            scale = s["scale"]
+            tileSize = s["tileSize"]
+        draw_rect = self.rect.copy()
+        draw_rect.x -= cameraX * scale * tileSize
+        draw_rect.y -= cameraY * scale * tileSize
+        if self.screen.screen.get_rect().colliderect(draw_rect): # very basic entity culling
+            self.screen.screen.blit(self.image, draw_rect)
     
     def update(self):
         """

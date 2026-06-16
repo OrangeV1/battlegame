@@ -1,5 +1,4 @@
 import pygame
-from entities.spriteProvider import SpriteProvider
 from entities.sprite2D import Sprite2D
 
 class Entity(Sprite2D):

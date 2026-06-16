@@ -1,5 +1,6 @@
 import pygame
 from entities.entity import Entity
+from yaml import safe_load
 
 class Player(Entity):
     def __init__(self, screen):
@@ -95,5 +96,15 @@ class Player(Entity):
         """
         #Update self.image based on direction and sprite number
         self.image = eval("self."+self.direction+str([self.spriteNum-1]))
+        with open("./settings.yaml") as s:
+            s = safe_load(s)
+            cameraX = s["cameraX"]
+            cameraY = s["cameraY"]
+            scale = s["scale"]
+            tileSize = s["tileSize"]
+        draw_rect = self.rect.copy()
+        draw_rect.x -= cameraX * scale * tileSize
+        draw_rect.y -= cameraY * scale * tileSize
         #Draw the updated image to the screen with the player's updated coordinates
-        self.screen.screen.blit(self.image, self.rect)
+        if self.screen.screen.get_rect().colliderect(draw_rect): # very basic entity culling
+            self.screen.screen.blit(self.image, draw_rect)

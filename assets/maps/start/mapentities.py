@@ -42,54 +42,63 @@ class downLevelTrigger(Trigger):
     
     def whenCollided(self):
         self.screen.tm.loadMap("temp")
-        self.screen.player1.pos.y = 80 * 0.5 + 10
+        self.screen.player1.pos.x = 80 * 100 + 10
+        self.screen.player1.pos.y = 80 * 26 + 10
 
 class Rtree1(Collider):
     def __init__(self, screen):
-        settings = safe_load(open("./settings.yaml"))
-        scale = settings["scale"] * 16
+        with open("./settings.yaml") as s:
+            settings = safe_load(s)
+            scale = settings["scale"] * 16
         super().__init__(screen, scale * 10, scale * 5, scale * 2, scale * 2)
 
 class Ltree1(Collider):
     def __init__(self, screen):
-        settings = safe_load(open("./settings.yaml"))
-        scale = settings["scale"] * 16
+        with open("./settings.yaml") as s:
+            settings = safe_load(s)
+            scale = settings["scale"] * 16
         super().__init__(screen, 0, scale * 5, scale * 1, scale * 3)
 
 class Rtree2(Collider):
     def __init__(self, screen):
-        settings = safe_load(open("./settings.yaml"))
-        scale = settings["scale"] * 16
+        with open("./settings.yaml") as s:
+            settings = safe_load(s)
+            scale = settings["scale"] * 16
         super().__init__(screen, scale * 8, scale *7, scale * 4, scale * 1)
 
 class Ltree2(Collider):
     def __init__(self, screen):
-        settings = safe_load(open("./settings.yaml"))
-        scale = settings["scale"] * 16
+        with open("./settings.yaml") as s:
+            settings = safe_load(s)
+            scale = settings["scale"] * 16
         super().__init__(screen, scale * 1, scale * 7, scale * 3, scale * 1)
 
 class Lwall1(Collider):
     def __init__(self, screen):
-        settings = safe_load(open("./settings.yaml"))
-        scale = settings["scale"] * 16
+        with open("./settings.yaml") as s:
+            settings = safe_load(s)
+            scale = settings["scale"] * 16
         super().__init__(screen, 0, 0, scale * 2, scale * 3)
 
 class Lwall2(Collider):
     def __init__(self, screen):
-        settings = safe_load(open("./settings.yaml"))
-        scale = settings["scale"] * 16
+        with open("./settings.yaml") as s:
+            settings = safe_load(s)
+            scale = settings["scale"] * 16
         super().__init__(screen, scale * 4, 0, scale * 1, scale * 3)
 
 class Rwall1(Collider):
     def __init__(self, screen):
-        settings = safe_load(open("./settings.yaml"))
-        scale = settings["scale"] * 16
+        with open("./settings.yaml") as s:
+            settings = safe_load(s)
+            scale = settings["scale"] * 16
         super().__init__(screen, scale * 7, 0, scale * 1, scale * 3)
 
 class Rwall2(Collider):
     def __init__(self, screen):
-        settings = safe_load(open("./settings.yaml"))
-        scale = settings["scale"] * 16
+        with open("./settings.yaml") as s:
+            settings = safe_load(s)
+            scale = settings["scale"] * 16
         super().__init__(screen, scale * 10, 0, scale * 2, scale * 3)
 
 class tileManager(Tileset):

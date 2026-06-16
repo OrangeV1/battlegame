@@ -3,3 +3,4 @@ cameraY: 26
 columns: 12
 rows: 8
 scale: 5
+tileSize: 16
