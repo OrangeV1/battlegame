@@ -38,6 +38,9 @@ class TileManager:
                 entity = getattr(entities, entity)
                 self.entities.append(entity(self.screen))
 
+    def loadEntity(self, i):
+        pass
+    
     """
     def createTile(self, i):
         '''

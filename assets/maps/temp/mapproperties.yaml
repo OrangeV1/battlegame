@@ -6,4 +6,4 @@ playerX: 0
 playerY: 0
 tileKeys: false
 tileSize: 16
-entities: ["tileManager", "objectManager"]
+entities: ["tileManager", "objectManager", "cameraHelper"]

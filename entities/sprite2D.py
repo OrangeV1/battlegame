@@ -19,12 +19,14 @@ class Sprite2D:
         """
         Draw self.image to the screen
         """
-        with open("./settings.yaml") as s:
-            s = safe_load(s)
-            cameraX = s["cameraX"]
-            cameraY = s["cameraY"]
-            scale = s["scale"]
-            tileSize = s["tileSize"]
+        global cameraX, cameraY, scale, tileSize
+        if "refreshCamera" in self.screen.events.keys():
+            with open("./settings.yaml") as s:
+                s = safe_load(s)
+                cameraX = s["cameraX"]
+                cameraY = s["cameraY"]
+                scale = s["scale"]
+                tileSize = s["tileSize"]
         draw_rect = self.rect.copy()
         draw_rect.x -= cameraX * scale * tileSize
         draw_rect.y -= cameraY * scale * tileSize

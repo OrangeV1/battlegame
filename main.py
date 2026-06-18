@@ -32,6 +32,7 @@ class Runner:
         pygame.display.set_caption("Game")
         #Create a player object
         self.player1 = Player(self)
+        self.events = {}
         #Constants
         FPS = 30
         BLK = (0, 0, 0)
@@ -57,6 +58,9 @@ class Runner:
             self.player1.update()
             #On-screen FPS counter for benchmarking
             #self.screen.blit(pygame.font.Font(None, 18).render(f"{clock.get_fps():2.0f} FPS" , True, (255, 255, 255)), (10, 10))
+            for event in self.events:
+                self.events[event] -= 1
+            self.events = {k: v for k, v in self.events.items() if v != 0}
             #Apply changes to the screen
             pygame.display.flip()
 

@@ -38,6 +38,7 @@ class Tileset:
             settings["cameraY"] = f["yOffset"]
             with open("./settings.yaml", "w") as s:
                 yaml.safe_dump(settings, s, default_flow_style=False)
+        self.screen.events["refreshCamera"] = 2
 
     
     def update(self):

@@ -94,14 +94,16 @@ class Player(Entity):
         """
         Draw an image to the screen based on position and current sprite
         """
+        global cameraX, cameraY, scale, tileSize
         #Update self.image based on direction and sprite number
         self.image = eval("self."+self.direction+str([self.spriteNum-1]))
-        with open("./settings.yaml") as s:
-            s = safe_load(s)
-            cameraX = s["cameraX"]
-            cameraY = s["cameraY"]
-            scale = s["scale"]
-            tileSize = s["tileSize"]
+        if "refreshCamera" in self.screen.events.keys():
+            with open("./settings.yaml") as s:
+                s = safe_load(s)
+                cameraX = s["cameraX"]
+                cameraY = s["cameraY"]
+                scale = s["scale"]
+                tileSize = s["tileSize"]
         draw_rect = self.rect.copy()
         draw_rect.x -= cameraX * scale * tileSize
         draw_rect.y -= cameraY * scale * tileSize
