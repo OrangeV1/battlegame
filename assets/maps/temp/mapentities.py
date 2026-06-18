@@ -5,17 +5,17 @@ from yaml import safe_load, safe_dump
 class cameraHelper():
     def __init__(self, screen):
         self.screen = screen
+        self.player = self.screen.player1
+        self.update_pos()
+        # self.colliders = [self.lRect, self.uRect, self.rRect, self.dRect]
+    
+    def update_pos(self):
         with open("./settings.yaml") as s:
             s = safe_load(s)
             self.cameraX = s["cameraX"]
             self.cameraY = s["cameraY"]
             self.scale = s["scale"]
             self.tileSize = s["tileSize"]
-        self.player = self.screen.player1
-        self.update_pos()
-        # self.colliders = [self.lRect, self.uRect, self.rRect, self.dRect]
-    
-    def update_pos(self):
         scale = self.tileSize * self.scale
         self.lRect = Rect(self.cameraX * scale - 16, self.cameraY * scale, 16, 80 * 8)
         self.uRect = Rect(self.cameraX * scale, self.cameraY * scale - 16, 80 * 12, 16)
