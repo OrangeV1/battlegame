@@ -36,6 +36,16 @@ class cameraHelper():
         #if self.player.rect.collidelist(self.colliders):
         if self.player.rect.colliderect(self.lRect):
             self.update_cam(-12, 0)
+            self.player.velocity.x -= 8
+        elif self.player.rect.colliderect(self.rRect):
+            self.update_cam(12, 0)
+            self.player.velocity.x += 8
+        if self.player.rect.colliderect(self.uRect):
+            self.update_cam(0, -8)
+            self.player.velocity.y -= 8
+        elif self.player.rect.colliderect(self.dRect):
+            self.update_cam(0, 8)
+            self.player.velocity.y += 8
 
 class tileManager(Tileset):
     def __init__(self, screen):
