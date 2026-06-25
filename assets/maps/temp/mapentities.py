@@ -29,7 +29,7 @@ class cameraHelper():
         settings["cameraY"] += y
         with open("./settings.yaml", "w") as s:
             safe_dump(settings, s, default_flow_style=False)
-        self.screen.events["refreshCamera"] = 1
+        self.screen.events["refreshCamera"] = 2
         self.update_pos()
 
     def update(self):

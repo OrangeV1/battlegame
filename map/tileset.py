@@ -40,6 +40,12 @@ class Tileset:
                 yaml.safe_dump(settings, s, default_flow_style=False)
         self.screen.events["refreshCamera"] = 2
 
+    def refreshcam(self):
+        global x, y
+        with open("./settings.yaml") as s:
+            settings = yaml.safe_load(s)
+            x = settings["cameraX"]
+            y = settings["cameraY"]
     
     def update(self):
         self.frame_time += 1
@@ -48,11 +54,10 @@ class Tileset:
             self.frame_time = 0
             if self.frame > 2 ** 20:
                 self.frame = 0
-        settings = yaml.safe_load(open("./settings.yaml"))
-        x = settings["cameraX"]
-        y = settings["cameraY"]
-        for i in range(0 + y, len(self.current_map)):
-            for j in range(0 + x, len(self.current_map[i])):
+        if "refreshCamera" in self.screen.events.keys():
+            self.refreshcam()
+        for i in range(0 + y, y + 8):
+            for j in range(0 + x, x + 12):
                 try:
                     if int(self.current_map[i][j]) in self.anim_tiles:
                         image = self.sp.scaleImage(self.tiles[int(self.current_map[i][j])][self.frame % len(self.tiles[int(self.current_map[i][j])])])
